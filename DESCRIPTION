@@ -2,7 +2,7 @@ Package: icaeDesign
 Type: Package
 Title: Corporate design-like functions for the ICAE
 Version: 0.0.0.9000
-Author:  person("Claudius", "Graebner", email = "claudius@claudius-graebner.com",
+Author: person("Claudius", "Graebner", email = "claudius@claudius-graebner.com",
                   role = c("aut", "cre"))
 Description: The package bundles functions that allow the creation of graphics
     in a style that is consistent with the corporate design of the 
@@ -11,3 +11,5 @@ Description: The package bundles functions that allow the creation of graphics
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+Imports: 
+    ggplot2 (>=3.1.0)
