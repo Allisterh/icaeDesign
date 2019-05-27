@@ -1,0 +1,13 @@
+Package: icaeDesign
+Type: Package
+Title: Corporate design-like functions for the ICAE
+Version: 0.0.0.9000
+Author:  person("Claudius", "Graebner", email = "claudius@claudius-graebner.com",
+                  role = c("aut", "cre"))
+Description: The package bundles functions that allow the creation of graphics
+    in a style that is consistent with the corporate design of the 
+    Institute for Comprehensive Analysis of the Economy (ICAE) at the Johannes
+    Kepler University Linz.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
