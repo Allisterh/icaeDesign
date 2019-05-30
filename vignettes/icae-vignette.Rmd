@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Color schemes in accordance with the ICAE corporate design"
+author: "Claudius Gräbner"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,50 +16,71 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+# Introduction
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+This package provides some functions that make it easy to create figures in accordance with the corporate design colors of the Institute for Comprehensive Analysis of the Economy (ICAE) at the Johannes Kepler University in Linz.^[More information about the ICAE can be found [here](https://www.jku.at/en/institute-for-comprehensive-analysis-of-the-economy/).]
 
-## Vignette Info
+The package is still under development. Here is just a quick overview over its functions. Note that all exported function already have a complete documentation so you might refer to the help function for more details.
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
-
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+For the following porpuses, this example code and the packages `dplyr` as well as `ggplot2` are used:
+```{r, echo=TRUE, message=FALSE}
+x <- seq(1,10, length.out=30)
+y <- rep(1, length(x))
+data <- data.frame(x=x, y=y)
+palettes <- c("main", "cool", "hot", "mixed")
+library(dplyr)
+library(ggplot2)
+library(icaeDesign)
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+# The palettes
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
+Currently, the package contains the following four palettes:
 
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
+```{r, fig.height=0.5, echo=FALSE}
+pal_plots <- list()
+for (n in palettes){
+  pal_name <- n
+  pal_plots[[pal_name]] <- ggplot(data, aes(x, y, z= x)) + geom_tile(aes(fill = x)) + 
+  scale_fill_icae(pal_name, discrete = F) +
+  ggtitle(paste0(pal_name)) +
+  theme_void() + theme(legend.position = "none", 
+                       plot.title = element_text(hjust = 0.5, size = 10))
+  print(pal_plots[[pal_name]] )
+}
+```
+  
 
-## More Examples
+All of them come with both continuous and discrete versions.
 
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
+# Using the package
 
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+The key functions of the package are `scale_color_icae()` and `scale_fill_icae()`, which allow to control the `color` and `fill` aesthetics in ggplot2 objects respectively. Please note that currently only the application to ggplot2 objects is supported.
+
+In case of a barplot you might use `scale_fill_icae()` as follows:
+
+```{r, message=FALSE, fig.width=4}
+data("iris")
+iris %>%
+  group_by(Species) %>%
+  summarise_all(mean) %>%
+  ungroup() %>%
+  ggplot(.) + geom_bar(aes(x=Species, y=Petal.Width, fill=Species), stat = "identity") + 
+  scale_fill_icae() + theme_minimal()
 ```
 
-Also a quote using `>`:
+Note that by default the functions return a discrete scale and for continuous cases you need to set `discrete = FALSE` explicitly.
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+```{r, fig.width=4}
+iris %>%
+  ggplot(.) + geom_point(aes(x=Sepal.Length, color=Sepal.Width, y=Petal.Length)) +
+  scale_color_icae(discrete = F) + theme_minimal()
+```
+
+For distinguishing discrete categories via color, such as countries, I found the `mixed` palette superior to `main`:
+
+```{r, fig.width=4}
+iris %>%
+  ggplot(.) + geom_point(aes(x=Sepal.Width, y=Sepal.Length, color=Species)) +
+  scale_color_icae(palette = "mixed", discrete = T) + theme_minimal()
+```
