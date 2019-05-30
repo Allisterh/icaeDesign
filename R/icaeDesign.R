@@ -9,6 +9,9 @@
 #'  \code{\link{scale_fill_icae}} return color schemes for the color and fill
 #'  aesthetic in ggplots.
 #'
+#' @seealso The package was loosely built upon the explanations in
+#' \url{https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}.
+#'
 #' @docType package
 #' @name icaeDesign
 NULL
