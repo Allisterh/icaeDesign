@@ -1,7 +1,7 @@
 Package: icaeDesign
 Type: Package
 Title: Corporate design-like functions for the ICAE
-Version: 0.0.0.9000
+Version: 0.1.2
 Author: person("Claudius", "Graebner", 
                   email = "claudius@claudius-graebner.com",
                   role = c("aut", "cre"), 
