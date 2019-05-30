@@ -2,11 +2,7 @@
 # They allow access a number of color schemes
 # currently, the following color schemes are there:
 #
-  # `main`  = icae_public_cols("sand", "purple", "dark red"),
-  # `cool`  = icae_public_cols("purple", "dark green", "dark blue"),
-  # `hot`   = icae_public_cols("sand", "dark red"),
-  # `mixed` = icae_public_cols("orange", "dark blue", "purple", "sand", "dark red"),
-  # `grey`  = icae_public_cols("light grey", "dark grey")
+
 #
 # For line plots, the mixed palette is best
 #
@@ -17,7 +13,7 @@
 # Dependencies: ggplot2
 #
 # Based on:
-# https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+#
 
 icae_public_colors <- c(
   `orange` = "#ff9900",
@@ -70,6 +66,18 @@ icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
 #'  colors. For the \code{colour} aesthetic use \code{scale_color_icae}, for
 #'  the \code{fill} aesthtetic use \code{scale_fill_icae}.
 #'
+#'  The palettes currently available are the following:
+#'
+#'  \code{main}: "sand", "purple", "dark red"
+#'
+#'  \code{cool}: "purple", "dark green", "dark blue"
+#'
+#'  \code{hot}: "sand", "dark red"
+#'
+#'  \code{mixed}: "orange", "dark blue", "purple", "sand", "dark red"
+#'
+#'  \code{grey}: "light grey", "dark grey"
+#'
 #' @param palette The type of palette to be returned. Currently, the follwoing
 #'  palettes are supported: \code{main}, \code{cool}, \code{hot}, \code{mixed},
 #'  and  \code{grey}.
@@ -83,7 +91,10 @@ icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
 #'  geom_point(size = 4, alpha = .6) +
 #'  scale_color_icae(discrete = FALSE, palette = "cool")
+#'
 #' @family color scheme functions
+#' @seealso The package was loosely built upon the explanations in
+#' \url{https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}.
 #' @name coloring
 NULL
 
