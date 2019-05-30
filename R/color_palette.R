@@ -121,6 +121,6 @@ scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, 
   if (discrete) {
     ggplot2::discrete_scale("fill", paste0("icae_public_", palette), palette = pal, ...)
   } else {
-    ggplot::scale_fill_gradientn(colours = pal(256), ...)
+    ggplot2::scale_fill_gradientn(colours = pal(256), ...)
   }
 }
