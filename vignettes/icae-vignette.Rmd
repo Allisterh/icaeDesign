@@ -22,18 +22,65 @@ This package provides some functions that make it easy to create figures in acco
 
 The package is still under development. Here is just a quick overview over its functions. Note that all exported function already have a complete documentation so you might refer to the help function for more details.
 
+For the following porpuses, this example code and the packages `dplyr` as well as `ggplot2` are used:
+```{r, echo=TRUE, message=FALSE}
+x <- seq(1,10, length.out=30)
+y <- rep(1, length(x))
+data <- data.frame(x=x, y=y)
+palettes <- c("main", "cool", "hot", "mixed")
+library(dplyr)
+library(ggplot2)
+library(icaeDesign)
+```
+
 # The palettes
-Currently, the package contains the following X palettes:
+
+Currently, the package contains the following four palettes:
+
+```{r, fig.height=0.5, echo=FALSE}
+pal_plots <- list()
+for (n in palettes){
+  pal_name <- n
+  pal_plots[[pal_name]] <- ggplot(data, aes(x, y, z= x)) + geom_tile(aes(fill = x)) + 
+  scale_fill_icae(pal_name, discrete = F) +
+  ggtitle(paste0(pal_name)) +
+  theme_void() + theme(legend.position = "none", 
+                       plot.title = element_text(hjust = 0.5, size = 10))
+  print(pal_plots[[pal_name]] )
+}
+```
   
-  All of them come with both continuous and discrete versions.
+
+All of them come with both continuous and discrete versions.
 
 # Using the package
 
 The key functions of the package are `scale_color_icae()` and `scale_fill_icae()`, which allow to control the `color` and `fill` aesthetics in ggplot2 objects respectively. Please note that currently only the application to ggplot2 objects is supported.
 
-## Time series data
+In case of a barplot you might use `scale_fill_icae()` as follows:
 
-If you want to highlight different countries I found the `mixed` palette to be superior:
-  
-  
-## Barplot data
+```{r, message=FALSE, fig.width=4}
+data("iris")
+iris %>%
+  group_by(Species) %>%
+  summarise_all(mean) %>%
+  ungroup() %>%
+  ggplot(.) + geom_bar(aes(x=Species, y=Petal.Width, fill=Species), stat = "identity") + 
+  scale_fill_icae() + theme_minimal()
+```
+
+Note that by default the functions return a discrete scale and for continuous cases you need to set `discrete = FALSE` explicitly.
+
+```{r, fig.width=4}
+iris %>%
+  ggplot(.) + geom_point(aes(x=Sepal.Length, color=Sepal.Width, y=Petal.Length)) +
+  scale_color_icae(discrete = F) + theme_minimal()
+```
+
+For distinguishing discrete categories via color, such as countries, I found the `mixed` palette superior to `main`:
+
+```{r, fig.width=4}
+iris %>%
+  ggplot(.) + geom_point(aes(x=Sepal.Width, y=Sepal.Length, color=Species)) +
+  scale_color_icae(palette = "mixed", discrete = T) + theme_minimal()
+```
