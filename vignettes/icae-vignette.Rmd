@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Color schemes in accordance with the ICAE corporate design"
+author: "Claudius Gräbner"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -36,4 +36,4 @@ The key functions of the package are `scale_color_icae()` and `scale_fill_icae()
 If you want to highlight different countries I found the `mixed` palette to be superior:
   
   
-  ## Barplot data
+## Barplot data
