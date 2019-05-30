@@ -59,8 +59,36 @@ icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
   colorRampPalette(pal, ...)
 }
 
-# Function to be used for coloring:
-scale_color_icae_public <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+#' Color scale in the ICAE color scheme.
+#'
+#' Creates a color scale in accordance with the official ICAE color scheme.
+#'
+#' These functions can be used to transform the color scheme of a \code{ggplot}
+#'  so that it is in accordance with the official ICAE color scheme.
+#'  The function provides functionality for continuous and discrete color
+#'  schemes but has still problems in handling plots with too many different
+#'  colors. For the \code{colour} aesthetic use \code{scale_color_icae}, for
+#'  the \code{fill} aesthtetic use \code{scale_fill_icae}.
+#'
+#' @param palette The type of palette to be returned. Currently, the follwoing
+#'  palettes are supported: \code{main}, \code{cool}, \code{hot}, \code{mixed},
+#'  and  \code{grey}.
+#' @param discrete If TRUE returnes a discrete scheme.
+#' @param reverse If TRUE reverses the resulting color scheme.
+#' @examples
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+#'  geom_point(size = 4) +
+#'  scale_color_icae("hot")
+#'
+#' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
+#'  geom_point(size = 4, alpha = .6) +
+#'  scale_color_icae(discrete = FALSE, palette = "cool")
+#' @family color scheme functions
+#' @name coloring
+NULL
+
+#' @rdname coloring
+scale_color_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- icae_public_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
@@ -70,8 +98,10 @@ scale_color_icae_public <- function(palette = "main", discrete = TRUE, reverse =
   }
 }
 
-# function to be used for filling
-scale_fill_icae_public <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+#' @rdname coloring
+#' @rdname coloring
+#' @rdname coloring
+scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
   pal <- icae_public_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
@@ -80,16 +110,3 @@ scale_fill_icae_public <- function(palette = "main", discrete = TRUE, reverse = 
     scale_fill_gradientn(colours = pal(256), ...)
   }
 }
-
-# Examples:
-# ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
-#   geom_point(size = 4) +
-#   scale_color_icae_public("hot")
-#
-# ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
-#   geom_point(size = 4, alpha = .6) +
-#   scale_color_icae_public(discrete = FALSE, palette = "cool")
-
-
-# A really wonderful next step would be to put all this wonderful code into a package for easy access by you and others.
-# If you’re new to package development, I can’t think of a better resource to get you started than Hadley Wickham‘s book, R Packages.
