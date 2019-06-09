@@ -37,15 +37,19 @@ library(icaeDesign)
 
 Currently, the package contains the following four palettes:
 
-```{r, fig.height=0.5, echo=FALSE}
+```{r, fig.height=0.5, fig.width=7, echo=FALSE}
 pal_plots <- list()
 for (n in palettes){
   pal_name <- n
-  pal_plots[[pal_name]] <- ggplot(data, aes(x, y, z= x)) + geom_tile(aes(fill = x)) + 
+  pal_plots[[pal_name]] <- ggplot(data, 
+                                  aes(x, y, z= x)
+                                  ) + 
+    geom_tile(aes(fill = x)) + 
   scale_fill_icae(pal_name, discrete = F) +
   ggtitle(paste0(pal_name)) +
-  theme_void() + theme(legend.position = "none", 
-                       plot.title = element_text(hjust = 0.5, size = 10))
+  theme_void() + 
+    theme(legend.position = "none", 
+          plot.title = element_text(hjust = 0.5, size = 10))
   print(pal_plots[[pal_name]] )
 }
 ```
@@ -59,30 +63,41 @@ The key functions are `scale_color_icae()` and `scale_fill_icae()`, which allow 
 
 In case of a barplot you might use `scale_fill_icae()` as follows:
 
-```{r, message=FALSE, fig.width=4}
+```{r, message=FALSE, fig.width=6}
 data("iris")
 iris %>%
   group_by(Species) %>%
   summarise_all(mean) %>%
   ungroup() %>%
-  ggplot(.) + geom_bar(aes(x=Species, y=Petal.Width, fill=Species), stat = "identity") + 
-  scale_fill_icae() + theme_minimal()
+  ggplot(.) + 
+  geom_bar(
+    aes(x=Species, y=Petal.Width, fill=Species), 
+    stat = "identity"
+    ) + 
+  scale_fill_icae() + 
+  theme_minimal()
 ```
 
 Note that by default the functions return a discrete scale and for continuous cases you need to set `discrete = FALSE` explicitly.
 
-```{r, fig.width=4}
+```{r, fig.width=6}
 iris %>%
-  ggplot(.) + geom_point(aes(x=Sepal.Length, color=Sepal.Width, y=Petal.Length)) +
-  scale_color_icae(discrete = F) + theme_minimal()
+  ggplot(.) + geom_point(
+    aes(x=Sepal.Length, color=Sepal.Width, y=Petal.Length)
+    ) +
+  scale_color_icae(discrete = F) + 
+  theme_minimal()
 ```
 
 For distinguishing discrete categories via color, such as countries, I found the `mixed` palette superior to `main`:
 
-```{r, fig.width=4}
+```{r, fig.width=6}
 iris %>%
-  ggplot(.) + geom_point(aes(x=Sepal.Width, y=Sepal.Length, color=Species)) +
-  scale_color_icae(palette = "mixed", discrete = T) + theme_minimal()
+  ggplot(.) + geom_point(
+    aes(x=Sepal.Width, y=Sepal.Length, color=Species)
+    ) +
+  scale_color_icae(palette = "mixed", discrete = T) + 
+  theme_minimal()
 ```
 
 # The new ggplot theme
@@ -90,16 +105,46 @@ iris %>%
 The package also features a new theme for ``ggplot2`` objects, called ``theme_icae``.
 It includes a number of changes that I found useful in improving plot appearance in general, but it is not specifically built to fit the ICAE color scheme.
 
-```{r, fig.width=4}
+```{r, fig.height=4, fig.width=7}
 classic_theme_plot <- iris %>%
-  ggplot(.) + geom_point(aes(x=Sepal.Width, y=Sepal.Length, color=Species)) +
+  ggplot(.) + geom_point(
+    aes(x=Sepal.Width, y=Sepal.Length, color=Species)
+    ) +
   ggtitle("The standard ggplot theme") +
   scale_color_icae(palette = "mixed", discrete = T)
 
 icae_theme_plot <- iris %>%
-  ggplot(.) + geom_point(aes(x=Sepal.Width, y=Sepal.Length, color=Species)) +
+  ggplot(.) + geom_point(
+    aes(x=Sepal.Width, y=Sepal.Length, color=Species)
+    ) +
   ggtitle("The theme_icae() appearance") +
-  scale_color_icae(palette = "mixed", discrete = T) + theme_icae()
+  scale_color_icae(palette = "mixed", discrete = T) + 
+  theme_icae()
 
-ggpubr::ggarrange(classic_theme_plot, icae_theme_plot, ncol = 2, nrow = 1, common.legend = F)
+ggpubr::ggarrange(classic_theme_plot, icae_theme_plot, 
+                  ncol = 2, nrow = 1, common.legend = F)
+```
+
+It also features acceptable defaults for non-standard specifications such as wrapped plots:
+
+```{r, fig.width=7, fig.height=6}
+classic_theme_plot <- iris %>%
+  ggplot(.) + geom_point(
+    aes(x=Sepal.Width, y=Sepal.Length)
+    ) +
+  ggtitle("The standard ggplot theme") +
+  scale_color_icae(palette = "mixed", discrete = T) + 
+  facet_wrap(~Species)
+
+icae_theme_plot <- iris %>%
+  ggplot(.) + geom_point(
+    aes(x=Sepal.Width, y=Sepal.Length)
+    ) +
+  ggtitle("The theme_icae() appearance") +
+  scale_color_icae(palette = "mixed", discrete = T) + 
+  facet_wrap(~Species) +
+  theme_icae()
+
+ggpubr::ggarrange(classic_theme_plot, icae_theme_plot, 
+                  ncol = 1, nrow = 2, common.legend = F)
 ```
