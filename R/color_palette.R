@@ -124,3 +124,12 @@ scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, 
     ggplot2::scale_fill_gradientn(colours = pal(256), ...)
   }
 }
+
+#' Standard theme for ggplot
+#'
+#' A standard base theme for ggplot
+#'
+#' This theme contains all the standard updates to the default ggplot theme.
+theme_icae <- function(...){
+  return(NULL)
+}
