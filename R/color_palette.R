@@ -103,11 +103,14 @@ NULL
 
 #' @rdname coloring
 #' @export
-scale_color_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+scale_color_icae <- function(palette = "main",
+                             discrete = TRUE, reverse = FALSE, ...) {
   pal <- icae_public_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
-    ggplot2::discrete_scale("colour", paste0("icae_public_", palette), palette = pal, ...)
+    ggplot2::discrete_scale("colour",
+                            paste0("icae_public_", palette),
+                            palette = pal, ...)
   } else {
     ggplot2::scale_color_gradientn(colours = pal(256), ...)
   }
@@ -115,11 +118,14 @@ scale_color_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE,
 
 #' @rdname coloring
 #' @export
-scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+scale_fill_icae <- function(palette = "main",
+                            discrete = TRUE, reverse = FALSE, ...) {
   pal <- icae_public_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
-    ggplot2::discrete_scale("fill", paste0("icae_public_", palette), palette = pal, ...)
+    ggplot2::discrete_scale("fill",
+                            paste0("icae_public_", palette),
+                            palette = pal, ...)
   } else {
     ggplot2::scale_fill_gradientn(colours = pal(256), ...)
   }
@@ -134,20 +140,24 @@ scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, 
 #'  \code{\link{icae_public_pal}} and returnes a vector with the requested
 #'  number of colors.
 #'
-#' @param palette The type of palette to be returned. Currently, the follwoing
-#'  palettes are supported: \code{main}, \code{cool}, \code{hot}, \code{mixed},
-#'  and  \code{grey}.
 #' @param n The number of different colors requested.
-#' @param reverse If TRUE reverses the resulting color scheme.
+#' @param palette_used The type of palette to be returned. Currently, the
+#'  follwoing palettes are supported: \code{main}, \code{cool}, \code{hot},
+#'  \code{mixed}, and  \code{grey}.
+#' @param reverse_pal If TRUE reverses the resulting color scheme.
 #' @return A vector of hex codes with colors from \code{palette}.
 #'
 #' @examples
+#' get_icae_colors(3)
+#'
+#' get_icae_colors(2, palette_used = "mixed", reverse_pal = TRUE)
 #'
 #' @family color scheme functions
 #' @seealso \code{\link{icae_public_pal}} for the function that assembles the
 #'  colors into consistent palettes and \code{\link{scale_color_icae}} for the
 #'  application to \code{ggplot2} objects.
-get_icae_colors <- function(...){
-  col_vector <- NULL
+get_icae_colors <- function(n, palette_used="main", reverse_pal=FALSE, ...){
+  col_vector <- icae_public_pal(palette = palette_used,
+                                reverse = reverse_pal)(n)
   return(col_vector)
 }
