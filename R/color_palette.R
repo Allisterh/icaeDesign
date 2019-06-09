@@ -125,6 +125,7 @@ scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, 
   }
 }
 
+
 #' Get ICAE colors
 #'
 #' Returns a vector of colors of a chose ICAE-color palette.
