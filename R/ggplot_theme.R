@@ -13,6 +13,7 @@
 #'  scale_color_icae("hot") +
 #'  theme_icae()
 #' @family ggplot themes
+#' @export
 theme_icae <- function(base_size = 11,
                        base_family = "",
                        base_line_size = base_size / 170,

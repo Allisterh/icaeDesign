@@ -2,3 +2,4 @@
 
 export(scale_color_icae)
 export(scale_fill_icae)
+export(theme_icae)
