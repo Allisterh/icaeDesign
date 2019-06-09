@@ -22,7 +22,7 @@ theme_icae <- function(base_size = 11,
                 base_line_size = base_line_size) %+replace%
     theme(
       axis.line = element_line(
-        color = rgb(188, 197, 207, maxColorValue = 255), #188, 197, 207
+        color = rgb(188, 197, 207, maxColorValue = 255),
         linetype = "solid", size = 0.5
         ),
       legend.position = "bottom",
@@ -30,11 +30,10 @@ theme_icae <- function(base_size = 11,
       legend.title = element_blank(),
       plot.title = element_text(
         color = rgb(43, 49, 62, maxColorValue = 255),
-        # face = "bold",
         hjust = 0.5
         ),
       axis.title = element_text(
-        color = rgb(23, 56, 92, maxColorValue = 255),
+        color = rgb(43, 49, 62, maxColorValue = 255),
         size = rel(0.75)
         ),
       axis.text = element_text(
@@ -42,13 +41,21 @@ theme_icae <- function(base_size = 11,
         size = rel(0.5)
         ),
       panel.grid.major = element_line(
-        rgb(188, 197, 207, maxColorValue = 255),#139, 155, 173
+        rgb(188, 197, 207, maxColorValue = 255),
         linetype = "solid"),
       panel.grid.minor = element_line(
-        rgb(233, 234, 233, maxColorValue = 255), #188, 197, 207
+        rgb(233, 234, 233, maxColorValue = 255),
         linetype = "dotted",
         size = rel(4)
         ),
+      strip.text = element_text(
+        size = rel(0.9),
+        colour = rgb(43, 49, 62, maxColorValue = 255),
+        margin = margin(t = 1, r = 1, b = 1, l = 1, unit = "pt")
+        ),
+      strip.text.x = element_text(
+        margin = margin(t = 5, r = 1, b = 1, l = 1, unit = "pt")
+      ),
       complete = TRUE
     )
 }
