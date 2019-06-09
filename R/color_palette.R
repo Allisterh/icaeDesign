@@ -139,27 +139,54 @@ scale_fill_icae <- function(palette = "main",
 #'
 #' This function takes one of the palettes defined in
 #'  \code{\link{icae_public_pal}} and returnes a vector with the requested
-#'  number of colors.
+#'  number of colors. To return all base colors of the ICAE color scheme
+#'  call the function with \code{col_name="all"}.
 #'
 #' @param n The number of different colors requested.
+#' @param col_name The name of a color as defined in
+#'  \code{\link{icae_public_cols}}. If 'all' returns all ICAE colors.
 #' @param palette_used The type of palette to be returned. Currently, the
 #'  follwoing palettes are supported: \code{main}, \code{cool}, \code{hot},
 #'  \code{mixed}, and  \code{grey}.
 #' @param reverse_pal If TRUE reverses the resulting color scheme.
-#' @return A vector of hex codes with colors from \code{palette}.
+#' @return A vector of hex codes with colors from \code{palette}
+#'  (if \code{col_name} is \code{FALSE}), a named vector of hex codes from
+#'  the colors specified in \code{col_name} otherwise.
 #'
 #' @examples
 #' get_icae_colors(3)
 #'
 #' get_icae_colors(2, palette_used = "mixed", reverse_pal = TRUE)
 #'
+#' get_icae_colors("dark blue")
+#'
+#' get_icae_colors(c("dark blue", "sand"))
+#'
+#' get_icae_colors(col_name="all")
+#'
 #' @family color scheme functions
 #' @seealso \code{\link{icae_public_pal}} for the function that assembles the
 #'  colors into consistent palettes and \code{\link{scale_color_icae}} for the
 #'  application to \code{ggplot2} objects.
 #' @export
-get_icae_colors <- function(n, palette_used="main", reverse_pal=FALSE, ...){
-  col_vector <- icae_public_pal(palette = palette_used,
-                                reverse = reverse_pal)(n)
+get_icae_colors <- function(n=1, col_name=NULL,
+                            palette_used="main", reverse_pal=FALSE, ...){
+  if (is.character(n)){
+    col_name <- n
+    n <- 1
+    if (col_name[1]=="all"){
+      return(icae_public_cols())
+    }
+  }
+  if (!is.null(col_name)){
+    if (n!=1){
+      warning("If col_name is given, values for n are ignored. For several
+              colors from an ICAE palette set col_name to FALSE")
+    }
+    col_vector <- icae_public_cols(col_name)
+  } else{
+    col_vector <- icae_public_pal(palette = palette_used,
+                                  reverse = reverse_pal)(n)
+  }
   return(col_vector)
 }

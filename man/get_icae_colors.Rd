@@ -4,10 +4,14 @@
 \alias{get_icae_colors}
 \title{Get ICAE colors}
 \usage{
-get_icae_colors(n, palette_used = "main", reverse_pal = FALSE, ...)
+get_icae_colors(n = 1, col_name = NULL, palette_used = "main",
+  reverse_pal = FALSE, ...)
 }
 \arguments{
 \item{n}{The number of different colors requested.}
+
+\item{col_name}{The name of a color as defined in
+\code{\link{icae_public_cols}}. If 'all' returns all ICAE colors.}
 
 \item{palette_used}{The type of palette to be returned. Currently, the
 follwoing palettes are supported: \code{main}, \code{cool}, \code{hot},
@@ -16,7 +20,9 @@ follwoing palettes are supported: \code{main}, \code{cool}, \code{hot},
 \item{reverse_pal}{If TRUE reverses the resulting color scheme.}
 }
 \value{
-A vector of hex codes with colors from \code{palette}.
+A vector of hex codes with colors from \code{palette}
+ (if \code{col_name} is \code{FALSE}), a named vector of hex codes from
+ the colors specified in \code{col_name} otherwise.
 }
 \description{
 Returns a vector of colors of a chose ICAE-color palette.
@@ -24,12 +30,19 @@ Returns a vector of colors of a chose ICAE-color palette.
 \details{
 This function takes one of the palettes defined in
  \code{\link{icae_public_pal}} and returnes a vector with the requested
- number of colors.
+ number of colors. To return all base colors of the ICAE color scheme
+ call the function with \code{col_name="all"}.
 }
 \examples{
 get_icae_colors(3)
 
 get_icae_colors(2, palette_used = "mixed", reverse_pal = TRUE)
+
+get_icae_colors("dark blue")
+
+get_icae_colors(c("dark blue", "sand"))
+
+get_icae_colors(col_name="all")
 
 }
 \seealso{
