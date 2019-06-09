@@ -156,6 +156,7 @@ scale_fill_icae <- function(palette = "main",
 #' @seealso \code{\link{icae_public_pal}} for the function that assembles the
 #'  colors into consistent palettes and \code{\link{scale_color_icae}} for the
 #'  application to \code{ggplot2} objects.
+#' @export
 get_icae_colors <- function(n, palette_used="main", reverse_pal=FALSE, ...){
   col_vector <- icae_public_pal(palette = palette_used,
                                 reverse = reverse_pal)(n)
