@@ -124,3 +124,29 @@ scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, 
     ggplot2::scale_fill_gradientn(colours = pal(256), ...)
   }
 }
+
+#' Get ICAE colors
+#'
+#' Returns a vector of colors of a chose ICAE-color palette.
+#'
+#' This function takes one of the palettes defined in
+#'  \code{\link{icae_public_pal}} and returnes a vector with the requested
+#'  number of colors.
+#'
+#' @param palette The type of palette to be returned. Currently, the follwoing
+#'  palettes are supported: \code{main}, \code{cool}, \code{hot}, \code{mixed},
+#'  and  \code{grey}.
+#' @param n The number of different colors requested.
+#' @param reverse If TRUE reverses the resulting color scheme.
+#' @return A vector of hex codes with colors from \code{palette}.
+#'
+#' @examples
+#'
+#' @family color scheme functions
+#' @seealso \code{\link{icae_public_pal}} for the function that assembles the
+#'  colors into consistent palettes and \code{\link{scale_color_icae}} for the
+#'  application to \code{ggplot2} objects.
+get_icae_colors <- function(...){
+  col_vector <- NULL
+  return(col_vector)
+}
