@@ -57,5 +57,7 @@ ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Sepal.Length)) +
 \seealso{
 The package was loosely built upon the explanations in
 \url{https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}.
+
+Other color scheme functions: \code{\link{get_icae_colors}}
 }
 \concept{color scheme functions}
