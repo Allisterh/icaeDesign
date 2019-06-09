@@ -59,7 +59,32 @@ All of them come with both continuous and discrete versions.
 
 ## Using the palettes
 
-The key functions are `scale_color_icae()` and `scale_fill_icae()`, which allow to control the `color` and `fill` aesthetics in ggplot2 objects respectively. Please note that currently only the application to ggplot2 objects is supported.
+### Create color vectors
+To get a vector of arbitrary length that contains the hex codes for colors from the ICAE palettes introduced above, use the function ``get_icae_colors``, which generates a vector of ``n`` different hex codes:
+
+```{r}
+list_of_cols <- list(
+  "hot_colors" = get_icae_colors(n = 3, palette_used = "hot"),
+  "cold_colors" = get_icae_colors(n = 2, palette_used = "cool", 
+                                  reverse_pal = TRUE),
+  "mixed_colors" = get_icae_colors(4, palette_used = "mixed")
+)
+print(list_of_cols)
+```
+
+You may also inquire the hex codes for the colors that are part of the corporate design:
+
+```{r}
+get_icae_colors(c("sand", "dark green"))
+```
+
+If you want to get the hex codes for all base colors of the corporate design call:
+```{r}
+get_icae_colors("all")
+```
+
+### Update ggplot2 objects
+The key functions are `scale_color_icae()` and `scale_fill_icae()`, which allow to control the `color` and `fill` aesthetics in ggplot2 objects respectively. 
 
 In case of a barplot you might use `scale_fill_icae()` as follows:
 

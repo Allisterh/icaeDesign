@@ -170,11 +170,60 @@ All of them come with both continuous and discrete versions.
 
 \subsection{Using the palettes}\label{using-the-palettes}
 
+\subsubsection{Create color vectors}\label{create-color-vectors}
+
+To get a vector of arbitrary length that contains the hex codes for
+colors from the ICAE palettes introduced above, use the function
+\texttt{get\_icae\_colors}, which generates a vector of \texttt{n}
+different hex codes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{list_of_cols <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}
+  \StringTok{"hot_colors"}\NormalTok{ =}\StringTok{ }\KeywordTok{get_icae_colors}\NormalTok{(}\DataTypeTok{n =} \DecValTok{3}\NormalTok{, }\DataTypeTok{palette_used =} \StringTok{"hot"}\NormalTok{),}
+  \StringTok{"cold_colors"}\NormalTok{ =}\StringTok{ }\KeywordTok{get_icae_colors}\NormalTok{(}\DataTypeTok{n =} \DecValTok{2}\NormalTok{, }\DataTypeTok{palette_used =} \StringTok{"cool"}\NormalTok{, }
+                                  \DataTypeTok{reverse_pal =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"mixed_colors"}\NormalTok{ =}\StringTok{ }\KeywordTok{get_icae_colors}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DataTypeTok{palette_used =} \StringTok{"mixed"}\NormalTok{)}
+\NormalTok{)}
+\KeywordTok{print}\NormalTok{(list_of_cols)}
+\CommentTok{#> $hot_colors}
+\CommentTok{#> [1] "#D8C469" "#AC6234" "#800000"}
+\CommentTok{#> }
+\CommentTok{#> $cold_colors}
+\CommentTok{#> [1] "#002B80" "#8600B3"}
+\CommentTok{#> }
+\CommentTok{#> $mixed_colors}
+\CommentTok{#> [1] "#006600" "#554F55" "#A1419A" "#800000"}
+\end{Highlighting}
+\end{Shaded}
+
+You may also inquire the hex codes for the colors that are part of the
+corporate design:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{get_icae_colors}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"sand"}\NormalTok{, }\StringTok{"dark green"}\NormalTok{))}
+\CommentTok{#>       sand dark green }
+\CommentTok{#>  "#d8c469"  "#006600"}
+\end{Highlighting}
+\end{Shaded}
+
+If you want to get the hex codes for all base colors of the corporate
+design call:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{get_icae_colors}\NormalTok{(}\StringTok{"all"}\NormalTok{)}
+\CommentTok{#>     orange     purple dark green       sand  dark blue   dark red }
+\CommentTok{#>  "#ff9900"  "#8600b3"  "#006600"  "#d8c469"  "#002b80"  "#800000"}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Update ggplot2 objects}\label{update-ggplot2-objects}
+
 The key functions are \texttt{scale\_color\_icae()} and
 \texttt{scale\_fill\_icae()}, which allow to control the \texttt{color}
-and \texttt{fill} aesthetics in ggplot2 objects respectively. Please
-note that currently only the application to ggplot2 objects is
-supported.
+and \texttt{fill} aesthetics in ggplot2 objects respectively.
 
 In case of a barplot you might use \texttt{scale\_fill\_icae()} as
 follows:
@@ -196,7 +245,7 @@ follows:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-3-1.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-6-1.pdf}
 
 Note that by default the functions return a discrete scale and for
 continuous cases you need to set \texttt{discrete\ =\ FALSE} explicitly.
@@ -212,7 +261,7 @@ continuous cases you need to set \texttt{discrete\ =\ FALSE} explicitly.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-4-1.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-7-1.pdf}
 
 For distinguishing discrete categories via color, such as countries, I
 found the \texttt{mixed} palette superior to \texttt{main}:
@@ -228,7 +277,7 @@ found the \texttt{mixed} palette superior to \texttt{main}:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-5-1.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-8-1.pdf}
 
 \section{The new ggplot theme}\label{the-new-ggplot-theme}
 
@@ -259,7 +308,7 @@ specifically built to fit the ICAE color scheme.
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-6-1.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-9-1.pdf}
 
 It also features acceptable defaults for non-standard specifications
 such as wrapped plots:
@@ -288,7 +337,7 @@ such as wrapped plots:
 \end{Highlighting}
 \end{Shaded}
 
-\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-7-1.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-10-1.pdf}
 
 
 \end{document}
