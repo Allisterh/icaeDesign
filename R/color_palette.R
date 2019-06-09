@@ -35,7 +35,8 @@ icae_public_cols <- function(...) {
 #'  See \code{\link[grDevices]{colorRampPalette}}.
 #'
 #' @seealso \code{\link{icae_public_cols}} for the collection of hex codes for
-#'  the ICAE colors that are available.
+#'  the ICAE colors that are available. \code{\link{get_icae_colors} to return
+#'  a vector of hex codes for a given ICAE palette.}
 icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
 
   icae_public_palettes <- list(
@@ -103,11 +104,14 @@ NULL
 
 #' @rdname coloring
 #' @export
-scale_color_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+scale_color_icae <- function(palette = "main",
+                             discrete = TRUE, reverse = FALSE, ...) {
   pal <- icae_public_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
-    ggplot2::discrete_scale("colour", paste0("icae_public_", palette), palette = pal, ...)
+    ggplot2::discrete_scale("colour",
+                            paste0("icae_public_", palette),
+                            palette = pal, ...)
   } else {
     ggplot2::scale_color_gradientn(colours = pal(256), ...)
   }
@@ -115,12 +119,74 @@ scale_color_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE,
 
 #' @rdname coloring
 #' @export
-scale_fill_icae <- function(palette = "main", discrete = TRUE, reverse = FALSE, ...) {
+scale_fill_icae <- function(palette = "main",
+                            discrete = TRUE, reverse = FALSE, ...) {
   pal <- icae_public_pal(palette = palette, reverse = reverse)
 
   if (discrete) {
-    ggplot2::discrete_scale("fill", paste0("icae_public_", palette), palette = pal, ...)
+    ggplot2::discrete_scale("fill",
+                            paste0("icae_public_", palette),
+                            palette = pal, ...)
   } else {
     ggplot2::scale_fill_gradientn(colours = pal(256), ...)
   }
+}
+
+
+#' Get ICAE colors
+#'
+#' Returns a vector of colors of a chose ICAE-color palette.
+#'
+#' This function takes one of the palettes defined in
+#'  \code{\link{icae_public_pal}} and returnes a vector with the requested
+#'  number of colors. To return all base colors of the ICAE color scheme
+#'  call the function with \code{col_name="all"}.
+#'
+#' @param n The number of different colors requested.
+#' @param col_name The name of a color as defined in
+#'  \code{\link{icae_public_cols}}. If 'all' returns all ICAE colors.
+#' @param palette_used The type of palette to be returned. Currently, the
+#'  follwoing palettes are supported: \code{main}, \code{cool}, \code{hot},
+#'  \code{mixed}, and  \code{grey}.
+#' @param reverse_pal If TRUE reverses the resulting color scheme.
+#' @return A vector of hex codes with colors from \code{palette}
+#'  (if \code{col_name} is \code{FALSE}), a named vector of hex codes from
+#'  the colors specified in \code{col_name} otherwise.
+#'
+#' @examples
+#' get_icae_colors(3)
+#'
+#' get_icae_colors(2, palette_used = "mixed", reverse_pal = TRUE)
+#'
+#' get_icae_colors("dark blue")
+#'
+#' get_icae_colors(c("dark blue", "sand"))
+#'
+#' get_icae_colors(col_name="all")
+#'
+#' @family color scheme functions
+#' @seealso \code{\link{icae_public_pal}} for the function that assembles the
+#'  colors into consistent palettes and \code{\link{scale_color_icae}} for the
+#'  application to \code{ggplot2} objects.
+#' @export
+get_icae_colors <- function(n=1, col_name=NULL,
+                            palette_used="main", reverse_pal=FALSE, ...){
+  if (is.character(n)){
+    col_name <- n
+    n <- 1
+    if (col_name[1]=="all"){
+      return(icae_public_cols())
+    }
+  }
+  if (!is.null(col_name)){
+    if (n!=1){
+      warning("If col_name is given, values for n are ignored. For several
+              colors from an ICAE palette set col_name to FALSE")
+    }
+    col_vector <- icae_public_cols(col_name)
+  } else{
+    col_vector <- icae_public_pal(palette = palette_used,
+                                  reverse = reverse_pal)(n)
+  }
+  return(col_vector)
 }

@@ -1,0 +1,343 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={Color schemes in accordance with the ICAE corporate design},
+            pdfauthor={Claudius Gräbner},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\newcommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{Color schemes in accordance with the ICAE corporate design}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{Claudius Gräbner}
+    \preauthor{\centering\large\emph}
+  \postauthor{\par}
+      \predate{\centering\large\emph}
+  \postdate{\par}
+    \date{2019-06-09}
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}\label{introduction}
+
+This package provides some functions that make it easy to create figures
+in accordance with the corporate design colors of the Institute for
+Comprehensive Analysis of the Economy (ICAE) at the Johannes Kepler
+University in Linz.\footnote{More information about the ICAE can be
+  found
+  \href{https://www.jku.at/en/institute-for-comprehensive-analysis-of-the-economy/}{here}.}
+
+The package is still under development. Here is just a quick overview
+over its functions. Note that all exported function already have a
+complete documentation so you might refer to the help function for more
+details.
+
+For the following porpuses, this example code and the packages
+\texttt{dplyr} as well as \texttt{ggplot2} are used:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{, }\DataTypeTok{length.out=}\DecValTok{30}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{, }\KeywordTok{length}\NormalTok{(x))}
+\NormalTok{data <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(}\DataTypeTok{x=}\NormalTok{x, }\DataTypeTok{y=}\NormalTok{y)}
+\NormalTok{palettes <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"main"}\NormalTok{, }\StringTok{"cool"}\NormalTok{, }\StringTok{"hot"}\NormalTok{, }\StringTok{"mixed"}\NormalTok{)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(icaeDesign)}
+\end{Highlighting}
+\end{Shaded}
+
+\section{The palettes}\label{the-palettes}
+
+Currently, the package contains the following four palettes:
+
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-2-1.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-2-2.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-2-3.pdf}
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-2-4.pdf}
+
+All of them come with both continuous and discrete versions.
+
+\subsection{Using the palettes}\label{using-the-palettes}
+
+\subsubsection{Create color vectors}\label{create-color-vectors}
+
+To get a vector of arbitrary length that contains the hex codes for
+colors from the ICAE palettes introduced above, use the function
+\texttt{get\_icae\_colors}, which generates a vector of \texttt{n}
+different hex codes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{list_of_cols <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}
+  \StringTok{"hot_colors"}\NormalTok{ =}\StringTok{ }\KeywordTok{get_icae_colors}\NormalTok{(}\DataTypeTok{n =} \DecValTok{3}\NormalTok{, }\DataTypeTok{palette_used =} \StringTok{"hot"}\NormalTok{),}
+  \StringTok{"cold_colors"}\NormalTok{ =}\StringTok{ }\KeywordTok{get_icae_colors}\NormalTok{(}\DataTypeTok{n =} \DecValTok{2}\NormalTok{, }\DataTypeTok{palette_used =} \StringTok{"cool"}\NormalTok{, }
+                                  \DataTypeTok{reverse_pal =} \OtherTok{TRUE}\NormalTok{),}
+  \StringTok{"mixed_colors"}\NormalTok{ =}\StringTok{ }\KeywordTok{get_icae_colors}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DataTypeTok{palette_used =} \StringTok{"mixed"}\NormalTok{)}
+\NormalTok{)}
+\KeywordTok{print}\NormalTok{(list_of_cols)}
+\CommentTok{#> $hot_colors}
+\CommentTok{#> [1] "#D8C469" "#AC6234" "#800000"}
+\CommentTok{#> }
+\CommentTok{#> $cold_colors}
+\CommentTok{#> [1] "#002B80" "#8600B3"}
+\CommentTok{#> }
+\CommentTok{#> $mixed_colors}
+\CommentTok{#> [1] "#006600" "#554F55" "#A1419A" "#800000"}
+\end{Highlighting}
+\end{Shaded}
+
+You may also inquire the hex codes for the colors that are part of the
+corporate design:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{get_icae_colors}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"sand"}\NormalTok{, }\StringTok{"dark green"}\NormalTok{))}
+\CommentTok{#>       sand dark green }
+\CommentTok{#>  "#d8c469"  "#006600"}
+\end{Highlighting}
+\end{Shaded}
+
+If you want to get the hex codes for all base colors of the corporate
+design call:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{get_icae_colors}\NormalTok{(}\StringTok{"all"}\NormalTok{)}
+\CommentTok{#>     orange     purple dark green       sand  dark blue   dark red }
+\CommentTok{#>  "#ff9900"  "#8600b3"  "#006600"  "#d8c469"  "#002b80"  "#800000"}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection{Update ggplot2 objects}\label{update-ggplot2-objects}
+
+The key functions are \texttt{scale\_color\_icae()} and
+\texttt{scale\_fill\_icae()}, which allow to control the \texttt{color}
+and \texttt{fill} aesthetics in ggplot2 objects respectively.
+
+In case of a barplot you might use \texttt{scale\_fill\_icae()} as
+follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(}\StringTok{"iris"}\NormalTok{)}
+\NormalTok{iris }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{group_by}\NormalTok{(Species) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{summarise_all}\NormalTok{(mean) }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ungroup}\NormalTok{() }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(.) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Species, }\DataTypeTok{y=}\NormalTok{Petal.Width, }\DataTypeTok{fill=}\NormalTok{Species), }
+    \DataTypeTok{stat =} \StringTok{"identity"}
+\NormalTok{    ) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{scale_fill_icae}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-6-1.pdf}
+
+Note that by default the functions return a discrete scale and for
+continuous cases you need to set \texttt{discrete\ =\ FALSE} explicitly.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iris }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(.) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Sepal.Length, }\DataTypeTok{color=}\NormalTok{Sepal.Width, }\DataTypeTok{y=}\NormalTok{Petal.Length)}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_icae}\NormalTok{(}\DataTypeTok{discrete =}\NormalTok{ F) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+For distinguishing discrete categories via color, such as countries, I
+found the \texttt{mixed} palette superior to \texttt{main}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{iris }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(.) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Sepal.Width, }\DataTypeTok{y=}\NormalTok{Sepal.Length, }\DataTypeTok{color=}\NormalTok{Species)}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_icae}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"mixed"}\NormalTok{, }\DataTypeTok{discrete =}\NormalTok{ T) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_minimal}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\section{The new ggplot theme}\label{the-new-ggplot-theme}
+
+The package also features a new theme for \texttt{ggplot2} objects,
+called \texttt{theme\_icae}. It includes a number of changes that I
+found useful in improving plot appearance in general, but it is not
+specifically built to fit the ICAE color scheme.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{classic_theme_plot <-}\StringTok{ }\NormalTok{iris }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(.) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Sepal.Width, }\DataTypeTok{y=}\NormalTok{Sepal.Length, }\DataTypeTok{color=}\NormalTok{Species)}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"The standard ggplot theme"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_icae}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"mixed"}\NormalTok{, }\DataTypeTok{discrete =}\NormalTok{ T)}
+
+\NormalTok{icae_theme_plot <-}\StringTok{ }\NormalTok{iris }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(.) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Sepal.Width, }\DataTypeTok{y=}\NormalTok{Sepal.Length, }\DataTypeTok{color=}\NormalTok{Species)}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"The theme_icae() appearance"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_icae}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"mixed"}\NormalTok{, }\DataTypeTok{discrete =}\NormalTok{ T) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_icae}\NormalTok{()}
+
+\NormalTok{ggpubr}\OperatorTok{::}\KeywordTok{ggarrange}\NormalTok{(classic_theme_plot, icae_theme_plot, }
+                  \DataTypeTok{ncol =} \DecValTok{2}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{1}\NormalTok{, }\DataTypeTok{common.legend =}\NormalTok{ F)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+It also features acceptable defaults for non-standard specifications
+such as wrapped plots:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{classic_theme_plot <-}\StringTok{ }\NormalTok{iris }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(.) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Sepal.Width, }\DataTypeTok{y=}\NormalTok{Sepal.Length)}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"The standard ggplot theme"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_icae}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"mixed"}\NormalTok{, }\DataTypeTok{discrete =}\NormalTok{ T) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{Species)}
+
+\NormalTok{icae_theme_plot <-}\StringTok{ }\NormalTok{iris }\OperatorTok{%>%}
+\StringTok{  }\KeywordTok{ggplot}\NormalTok{(.) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_point}\NormalTok{(}
+    \KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{Sepal.Width, }\DataTypeTok{y=}\NormalTok{Sepal.Length)}
+\NormalTok{    ) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"The theme_icae() appearance"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_color_icae}\NormalTok{(}\DataTypeTok{palette =} \StringTok{"mixed"}\NormalTok{, }\DataTypeTok{discrete =}\NormalTok{ T) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{Species) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme_icae}\NormalTok{()}
+
+\NormalTok{ggpubr}\OperatorTok{::}\KeywordTok{ggarrange}\NormalTok{(classic_theme_plot, icae_theme_plot, }
+                  \DataTypeTok{ncol =} \DecValTok{1}\NormalTok{, }\DataTypeTok{nrow =} \DecValTok{2}\NormalTok{, }\DataTypeTok{common.legend =}\NormalTok{ F)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{icae-vignette_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+
+\end{document}
