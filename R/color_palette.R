@@ -35,7 +35,8 @@ icae_public_cols <- function(...) {
 #'  See \code{\link[grDevices]{colorRampPalette}}.
 #'
 #' @seealso \code{\link{icae_public_cols}} for the collection of hex codes for
-#'  the ICAE colors that are available.
+#'  the ICAE colors that are available. \code{\link{get_icae_colors} to return
+#'  a vector of hex codes for a given ICAE palette.}
 icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
 
   icae_public_palettes <- list(
