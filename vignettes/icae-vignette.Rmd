@@ -19,10 +19,13 @@ knitr::opts_chunk$set(
 # Introduction
 
 This package provides some functions that make it easy to create figures in accordance with the corporate design colors of the Institute for Comprehensive Analysis of the Economy (ICAE) at the Johannes Kepler University in Linz.^[More information about the ICAE can be found [here](https://www.jku.at/en/institute-for-comprehensive-analysis-of-the-economy/).]
+I am currently adding the color scheme for the official
+colors of the Europa University Flensburg as well.
 
 The package is still under development. Here is just a quick overview over its functions. Note that all exported function already have a complete documentation so you might refer to the help function for more details.
 
-For the following porpuses, this example code and the packages `dplyr` as well as `ggplot2` are used:
+For the following purposes, this example code and the packages `dplyr` as well as `ggplot2` are used:
+
 ```{r, echo=TRUE, message=FALSE}
 x <- seq(1,10, length.out=30)
 y <- rep(1, length(x))
@@ -35,7 +38,8 @@ library(icaeDesign)
 
 # The palettes
 
-Currently, the package contains the following four palettes:
+Currently, the package contains the following four 
+palettes for the ICAE:
 
 ```{r, fig.height=0.5, fig.width=7, echo=FALSE}
 pal_plots <- list()
@@ -54,6 +58,24 @@ for (n in palettes){
 }
 ```
   
+There are four similar palettes for the EUF case:
+
+```{r, fig.height=0.5, fig.width=7, echo=FALSE}
+pal_plots <- list()
+for (n in palettes){
+  pal_name <- n
+  pal_plots[[pal_name]] <- ggplot(data, 
+                                  aes(x, y, z= x)
+                                  ) + 
+    geom_tile(aes(fill = x)) + 
+  scale_fill_euf(pal_name, discrete = F) +
+  ggtitle(paste0(pal_name)) +
+  theme_void() + 
+    theme(legend.position = "none", 
+          plot.title = element_text(hjust = 0.5, size = 10))
+  print(pal_plots[[pal_name]] )
+}
+```
 
 All of them come with both continuous and discrete versions.
 

@@ -4,8 +4,12 @@
 \alias{theme_icae}
 \title{A ggplot theme for the icaeDesign package}
 \usage{
-theme_icae(base_size = 11, base_family = "",
-  base_line_size = base_size/170, base_rect_size = base_size/170)
+theme_icae(
+  base_size = 11,
+  base_family = "",
+  base_line_size = base_size/170,
+  base_rect_size = base_size/170
+)
 }
 \description{
 A theme summarizing the typical adjustments made to ggplots.

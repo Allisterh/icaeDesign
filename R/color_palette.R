@@ -27,7 +27,7 @@ icae_public_cols <- function(...) {
 #' Assembles colors defined in \code{\link{icae_public_cols}} into palettes.
 #'
 #' This function takes all the colors of which the hex codes are collected in
-#'  \code{\link{icae_public_cols}} and assembles them into consistend palettes
+#'  \code{\link{icae_public_cols}} and assembles them into consistent palettes
 #'  that are all consistent with the corporate design of the ICAE.
 #' @param palette The name of the desired palette.
 #' @param reverse If TRUE the colors of the palette are reversed.
@@ -35,8 +35,8 @@ icae_public_cols <- function(...) {
 #'  See \code{\link[grDevices]{colorRampPalette}}.
 #'
 #' @seealso \code{\link{icae_public_cols}} for the collection of hex codes for
-#'  the ICAE colors that are available. \code{\link{get_icae_colors} to return
-#'  a vector of hex codes for a given ICAE palette.}
+#'  the ICAE colors that are available. \code{\link{get_icae_colors}} to return
+#'  a vector of hex codes for a given ICAE palette.
 icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
 
   icae_public_palettes <- list(
@@ -68,7 +68,7 @@ icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
 #'  The function provides functionality for continuous and discrete color
 #'  schemes but has still problems in handling plots with too many different
 #'  colors. For the \code{colour} aesthetic use \code{scale_color_icae}, for
-#'  the \code{fill} aesthtetic use \code{scale_fill_icae}.
+#'  the \code{fill} aesthetic use \code{scale_fill_icae}.
 #'
 #'  The palettes currently available are the following:
 #'
@@ -85,7 +85,7 @@ icae_public_pal <- function(palette = "main", reverse = FALSE, ...) {
 #' @param palette The type of palette to be returned. Currently, the follwoing
 #'  palettes are supported: \code{main}, \code{cool}, \code{hot}, \code{mixed},
 #'  and  \code{grey}.
-#' @param discrete If TRUE returnes a discrete scheme.
+#' @param discrete If TRUE returns a discrete scheme.
 #' @param reverse If TRUE reverses the resulting color scheme.
 #' @examples
 #' ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
@@ -146,7 +146,7 @@ scale_fill_icae <- function(palette = "main",
 #' @param col_name The name of a color as defined in
 #'  \code{\link{icae_public_cols}}. If 'all' returns all ICAE colors.
 #' @param palette_used The type of palette to be returned. Currently, the
-#'  follwoing palettes are supported: \code{main}, \code{cool}, \code{hot},
+#'  following palettes are supported: \code{main}, \code{cool}, \code{hot},
 #'  \code{mixed}, and  \code{grey}.
 #' @param reverse_pal If TRUE reverses the resulting color scheme.
 #' @return A vector of hex codes with colors from \code{palette}
