@@ -3,7 +3,8 @@
 This package provides a number of convenience functions that allows you
 to create plots that are in accordance with the corporate design of the
 [Institute for Comprehensive Analysis of the Economy (ICAE)](https://www.jku.at/en/institute-for-comprehensive-analysis-of-the-economy/) 
-at the Johannes Kepler University in Linz. 
+at the Johannes Kepler University in Linz, as well as the 
+[Europa University Flensburg](https://www.uni-flensburg.de/).
 
 For information on what the package has to offer and how to use it 
 properly, please refer to the vignette ``icae-vignette`` in the folder 
