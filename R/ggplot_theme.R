@@ -14,7 +14,7 @@
 #'  theme_icae()
 #' @family ggplot themes
 #' @export
-theme_icae <- function(base_size = 11,
+theme_icae <- function(base_size = 14,
                        base_family = "",
                        base_line_size = base_size / 170,
                        base_rect_size = base_size / 170){
